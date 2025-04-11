@@ -61,6 +61,13 @@ for i in $(seq 1 ${NODE_COUNT}); do
         INSTALL_K3S_VERSION=${K3S_VERSION} sh -"
 done
 
+# Label Worker Nodes
+for i in $(seq 1 ${NODE_COUNT}); do
+    echo "📦 Labelling worker node ${i}..."
+    sudo multipass exec "${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}" -- \
+        bash -c "kubectl label node ${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i} node-role.kubernetes.io/worker=${CLUSTER_NAME}-${WORKER_NODE_PREFIX}"
+done
+
 # Copy kubeconfig
 echo "📄 Copying kubeconfig to local machine..."
 mkdir -p ~/.kube

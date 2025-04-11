@@ -83,6 +83,12 @@ WORKER_NODE_PREFIX: "worker"
 
 ## Usage
 
+### Verify Multipass Instance Status
+
+```bash
+multipass info
+```
+
 ### Verify Cluster Status
 
 ```bash
@@ -104,6 +110,18 @@ To remove the cluster:
 
 ```bash
 ./scripts/destroy-cluster.sh
+```
+
+### Suspend or pause multipass instances
+
+```bash
+multipass suspend --all
+```
+
+### Resume instances
+
+```bash
+multipass start --all
 ```
 
 ## Troubleshooting
