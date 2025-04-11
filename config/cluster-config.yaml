@@ -1,0 +1,47 @@
+# Cluster Configuration
+
+# Name of your cluster
+CLUSTER_NAME: "k3s-cluster"
+
+# Ubuntu version for the nodes (20.04/22.04/23.04)
+UBUNTU_VERSION: "22.04"
+
+# Number of worker nodes
+NODE_COUNT: 1
+
+# CPU cores for master node
+MASTER_CPU: 2
+
+# Memory in MB for master node
+MASTER_MEMORY: 2048
+
+# Disk size in GB for master node
+MASTER_DISK: 10
+
+# CPU cores for worker nodes
+WORKER_CPU: 2
+
+# Memory in MB for worker nodes
+WORKER_MEMORY: 2048
+
+# Disk size in GB for worker nodes
+WORKER_DISK: 10
+
+# K3s version to install - lookup latest version at https://github.com/k3s-io/k3s/releases
+K3S_VERSION: "v1.32.3+k3s1"
+
+# Networking Configuration
+
+# # Pod network CIDR
+# POD_CIDR: "10.244.0.0/16"
+
+# # Service network CIDR
+# SERVICE_CIDR: "10.96.0.0/16"
+
+# Node Naming Configuration
+
+# Master node prefix
+MASTER_NODE_PREFIX: "master"
+
+# Worker node prefix
+WORKER_NODE_PREFIX: "worker"
