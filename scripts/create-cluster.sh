@@ -18,7 +18,7 @@ check_dependencies
 if multipass info "${CLUSTER_NAME}-${MASTER_NODE_PREFIX}" &>/dev/null; then
     echo "❌ Error: Master node '${CLUSTER_NAME}-${MASTER_NODE_PREFIX}' already exists!"
     echo "Please either:"
-    echo "  1. Delete the existing node: multipass delete ${CLUSTER_NAME}-${MASTER_NODE_PREFIX}"
+    echo "  1. Delete the existing node: multipass delete ${CLUSTER_NAME}-${MASTER_NODE_PREFIX} --purge"
     echo "  2. Change CLUSTER_NAME in config/cluster-config.yaml"
     exit 1
 fi
@@ -28,7 +28,7 @@ for i in $(seq 1 ${NODE_COUNT}); do
     if multipass info "${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}" &>/dev/null; then
         echo "❌ Error: Worker node '${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}' already exists!"
         echo "Please either:"
-        echo "  1. Delete the existing node: multipass delete ${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}"
+        echo "  1. Delete the existing node: multipass delete ${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i} --purge"
         echo "  2. Change CLUSTER_NAME in config/cluster-config.yaml"
         exit 1
     fi
