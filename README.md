@@ -9,6 +9,19 @@ A streamlined solution for creating a lightweight Kubernetes cluster using K3s a
 -- After Installing multipass open the  app and allow access to local networks, this is required to ssh into the VMs.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/) installed
 
+## Post-Installation Setup
+
+### macOS Network Permissions
+After installing Multipass, you need to configure network access permissions:
+
+1. Open **System Preferences**
+2. Navigate to **Security & Privacy** > **Local Network**
+3. Add the following applications:
+   - Terminal app (if using CLI)
+   - Visual Studio Code (if using the integrated terminal)
+
+This step is required to allow proper communication with the Multipass VMs.
+
 ## Features
 
 - 🚀 Quick cluster setup with a single command
