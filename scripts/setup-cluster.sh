@@ -14,6 +14,26 @@ read_config
 # Check dependencies
 check_dependencies
 
+# Check if master node already exists
+if multipass info "${CLUSTER_NAME}-${MASTER_NODE_PREFIX}" &>/dev/null; then
+    echo "❌ Error: Master node '${CLUSTER_NAME}-${MASTER_NODE_PREFIX}' already exists!"
+    echo "Please either:"
+    echo "  1. Delete the existing node: multipass delete ${CLUSTER_NAME}-${MASTER_NODE_PREFIX}"
+    echo "  2. Change CLUSTER_NAME in config/cluster-config.yaml"
+    exit 1
+fi
+
+# Check if any worker nodes already exist
+for i in $(seq 1 ${NODE_COUNT}); do
+    if multipass info "${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}" &>/dev/null; then
+        echo "❌ Error: Worker node '${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}' already exists!"
+        echo "Please either:"
+        echo "  1. Delete the existing node: multipass delete ${CLUSTER_NAME}-${WORKER_NODE_PREFIX}-${i}"
+        echo "  2. Change CLUSTER_NAME in config/cluster-config.yaml"
+        exit 1
+    fi
+done
+
 echo "🚀 Setting up K3s cluster with Multipass..."
 echo "  • Master CPU: ${MASTER_CPU}"
 echo "  • Master Memory: ${MASTER_MEMORY}"
