@@ -36,7 +36,7 @@ This step is required to allow proper communication with the Multipass VMs.
 ```
 k8s-multipass-setup/
 ├── scripts/
-│   ├── setup-cluster.sh    # Main cluster creation script
+│   ├── create-cluster.sh    # Main cluster creation script
 │   ├── destroy-cluster.sh  # Cluster cleanup script
 │   └── utils.sh           # Utility functions
 ├── config/
@@ -66,7 +66,7 @@ k8s-multipass-setup/
 4. Create the cluster:
 
    ```bash
-   ./scripts/setup-cluster.sh
+   ./scripts/create-cluster.sh
    ```
 
 ## Configuration
