@@ -22,6 +22,22 @@ After installing Multipass, you need to configure network access permissions:
 
 This step is required to allow proper communication with the Multipass VMs.
 
+### Multipass Authentication
+If you encounter the following error while running the script:
+
+```bash
+exec failed: The client is not authenticated with the Multipass service.
+Please use 'multipass authenticate' before proceeding
+```
+
+You need to authenticate the Multipass service. Run the following command in your terminal:
+
+```bash
+multipass set local.passphrase="<your-passphrase>"
+multipass authenticate "<your-passphrase>"
+sudo multipass authenticate "<your-passphrase>"
+```
+
 ## Features
 
 - 🚀 Quick cluster setup with a single command
