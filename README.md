@@ -4,25 +4,27 @@ A streamlined solution for creating a lightweight Kubernetes cluster using K3s a
 
 ## Prerequisites
 
-- macOS (Apple Silicon or Intel)
-- [Multipass](https://multipass.run/) installed (`brew install --cask multipass`)
--- After Installing multipass open the  app and allow access to local networks, this is required to ssh into the VMs.
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/) installed
+* macOS (Apple Silicon or Intel)
+* [Multipass](https://multipass.run/) installed (`brew install --cask multipass`)\
+  \-- After installing multipass, open the app and allow access to local networks; this is required to SSH into the VMs.
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/) installed
 
 ## Post-Installation Setup
 
 ### macOS Network Permissions
+
 After installing Multipass, you need to configure network access permissions:
 
 1. Open **System Preferences**
 2. Navigate to **Security & Privacy** > **Local Network**
 3. Add the following applications:
-   - Terminal app (if using CLI)
-   - Visual Studio Code (if using the integrated terminal)
+   * Terminal app (if using CLI)
+   * Visual Studio Code (if using the integrated terminal)
 
 This step is required to allow proper communication with the Multipass VMs.
 
 ### Multipass Authentication
+
 If you encounter the following error while running the script:
 
 ```bash
@@ -40,12 +42,12 @@ sudo multipass authenticate "<your-passphrase>"
 
 ## Features
 
-- 🚀 Quick cluster setup with a single command
-- ⚙️ Fully configurable cluster parameters via YAML
-- 🔄 Easy scaling of worker nodes
-- 🧹 Simple cleanup process
-- 💪 Resource-efficient K3s implementation
-- 🔒 Secure by default configuration
+* 🚀 Quick cluster setup with a single command
+* ⚙️ Fully configurable cluster parameters via YAML
+* 🔄 Easy scaling of worker nodes
+* 🧹 Simple cleanup process
+* 💪 Resource-efficient K3s implementation
+* 🔒 Secure by default configuration
 
 ## Project Structure
 
@@ -63,27 +65,24 @@ k8s-multipass-setup/
 
 ## Quick Start
 
-1. Clone the repository:
+1.  Clone the repository:
 
-   ```bash
-   git clone <repository-url>
-   cd k8s-multipass-setup
-   ```
+    ```bash
+    git clone <repository-url>
+    cd k8s-multipass-setup
+    ```
+2.  Make scripts executable:
 
-2. Make scripts executable:
-
-   ```bash
-   chmod +x scripts/*.sh
-   ```
-
-3. Configure your cluster:
+    ```bash
+    chmod +x scripts/*.sh
+    ```
+3. Configure your cluster:\
    Edit `config/cluster-config.yaml` to match your requirements.
+4.  Create the cluster:
 
-4. Create the cluster:
-
-   ```bash
-   ./scripts/create-cluster.sh
-   ```
+    ```bash
+    ./scripts/create-cluster.sh
+    ```
 
 ## Configuration
 
@@ -155,24 +154,22 @@ multipass start --all
 
 ## Troubleshooting
 
-1. If nodes fail to start:
+1.  If nodes fail to start:
 
-   ```bash
-   multipass list
-   multipass info <node-name>
-   ```
+    ```bash
+    multipass list
+    multipass info <node-name>
+    ```
+2.  Check K3s service status:
 
-2. Check K3s service status:
+    ```bash
+    sudo multipass exec <node-name> -- sudo systemctl status k3s
+    ```
+3.  View K3s logs:
 
-   ```bash
-   sudo multipass exec <node-name> -- sudo systemctl status k3s
-   ```
-
-3. View K3s logs:
-
-   ```bash
-   sudo multipass exec <node-name> -- sudo journalctl -u k3s
-   ```
+    ```bash
+    sudo multipass exec <node-name> -- sudo journalctl -u k3s
+    ```
 
 ## Contributing
 
@@ -184,6 +181,6 @@ multipass start --all
 
 ## Acknowledgments
 
-- [K3s](https://k3s.io/) - Lightweight Kubernetes
-- [Multipass](https://multipass.run/) - Ubuntu VMs on demand
-- [Ubuntu](https://ubuntu.com/) - Base OS for nodes
+* [K3s](https://k3s.io/) - Lightweight Kubernetes
+* [Multipass](https://multipass.run/) - Ubuntu VMs on demand
+* [Ubuntu](https://ubuntu.com/) - Base OS for nodes
